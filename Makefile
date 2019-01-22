@@ -14,6 +14,7 @@ mysql:
 
 	docker run \
 		-d \
+		--name $(PROJECT)-mysql \
 		--rm \
 		--volume $(PROJECT)-mysql:/var/lib/mysql \
 		--env MYSQL_ROOT_PASSWORD=$(MYSQL_PASSWORD) \
@@ -21,4 +22,5 @@ mysql:
 			mysql:$(MYSQL_VERSION)
 
 clean:
+	- docker rm -f $(PROJECT)-mysql
 	- docker volume rm -f $(PROJECT)-mysql
