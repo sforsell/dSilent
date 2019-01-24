@@ -1,5 +1,5 @@
 export PROJECT=dSilent
-export MYSQL_VERSION=8.0.14
+export MYSQL_VERSION=5.6
 export MYSQL_PASSWORD=dSilent
 
 make:
