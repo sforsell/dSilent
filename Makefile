@@ -1,12 +1,12 @@
 export PROJECT=dSilent
-export MYSQL_VERSION=8.0.14
+export MYSQL_VERSION=5.6
 export MYSQL_PASSWORD=dSilent
 
 make:
 	pip install -r requirements.txt
 
 run: mysql
-
+	python manage.py runserver
 
 mysql:
 	- docker volume create $(PROJECT)-mysql
