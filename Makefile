@@ -1,12 +1,16 @@
 export PROJECT=dSilent
 export MYSQL_VERSION=5.6
 export MYSQL_PASSWORD=dSilent
+ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
 
 make:
 	pip install -r requirements.txt
 
 run: mysql
 	python manage.py runserver
+
+command:
+	@ eval $(ARGS)
 
 mysql:
 	- docker volume create $(PROJECT)-mysql
@@ -24,3 +28,6 @@ mysql:
 clean:
 	- docker rm -f $(PROJECT)-mysql
 	- docker volume rm -f $(PROJECT)-mysql
+
+%:
+	@:
